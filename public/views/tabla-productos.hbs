@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/normalizr@3.6.1/dist/normalizr.browser.min.js"></script>
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script type="module" src="./js/normalizer.js" defer></script>
+    <script type="module" src="./js/main.js" defer></script>
+</head>
+
+<body>
+<style>
+    .table td,
+    .table th {
+        vertical-align: middle;
+    }
+</style>
+
+{{#if productos.length}}
+<h2>Productos</h2>
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Image</th>
+        </tr>
+        {{#each productos}}
+        <tr>
+            <td>{{this.title}}</td>
+            <td>${{this.price}}</td>
+            <td><img width="100" src={{this.thumbnail}} alt="not found"></td>
+        </tr>
+        {{/each}}
+    </table>
+</div>
+{{else}}
+<h3>No hay productos</h3>
+{{/if}}
+
+</body>
+
+</html>
